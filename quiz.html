@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+</head>
+
+ <style>
+        body {
+        background-color: #007a00;
+        color: #000000;
+        font-style: oblique;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        }
+        .enviar {
+	    display: block;
+	    margin: 0 0 20px;
+	    padding: 10px 25px;
+	    width: 250px;
+	    position: relative;
+	    margin: 0 auto;
+	    background-color: #ffffff; 
+        color: #000000; 
+        border: 2px solid #000; 
+        border-radius: 30px; 
+        padding: 10px 20px; 
+        font-size: 16px; 
+        cursor: pointer; 
+        transition: background-color 0.3s, color 0.3s; 
+        }
+
+        .enviar:hover {
+    	background: rgb(43, 255, 0);
+    	transform: scale(1.2);
+        }
+
+        .caixa {
+	    width: 400px;
+	    margin: 0 auto;
+	    background-color: #00ff15; 
+        color: #000; 
+        border: 3px solid #000; 
+        border-radius: 30px; 
+        padding: 10px 20px; 
+        font-size: 60px; 
+        cursor: pointer; 
+        }
+        .caixamini {
+	    width: 340px;
+	    margin: 0 auto;
+	    background-color: #88ff00; 
+        color: #000; 
+        border: 2px solid #000; 
+        border-radius: 30px; 
+        padding: 10px 20px; 
+        font-size: 16px; 
+        cursor: pointer;
+}
+    </style>
+
+<body>
+    <h1>Quiz</h1>
+    <div id="quiz">
+        <p id="question"></p>
+        <input type="text" id="answer" class="caixa">
+        <button id="submit" class="enviar">Enviar</button>
+    </div>
+
+    <script>
+        const questions = [
+            { question: "Pergunta 1", answer: "resposta1" },
+            { question: "Pergunta 2", answer: "resposta2" },
+            { question: "Pergunta 3", answer: "resposta3" }
+        ];
+
+        let currentQuestion = 0;
+
+        const questionElement = document.getElementById("question");
+        const answerElement = document.getElementById("answer");
+        const submitButton = document.getElementById("submit");
+
+        function showQuestion() {
+            questionElement.textContent = questions[currentQuestion].question;
+        }
+
+        function checkAnswer() {
+            const userAnswer = answerElement.value;
+            const correctAnswer = questions[currentQuestion].answer;
+
+            if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                if (currentQuestion < questions.length - 1) {
+                    currentQuestion++;
+                    showQuestion();
+                    answerElement.value = "";
+                } else {
+                    alert("Parabéns! Você acertou todas as perguntas.");
+                    resetQuiz();
+                }
+            } else {
+                alert("Resposta incorreta. Tente novamente.");
+                currentQuestion = 0;
+                showQuestion();
+                answerElement.value = "";
+            }
+        }
+
+        function resetQuiz() {
+            currentQuestion = 0;
+            showQuestion();
+            answerElement.value = "";
+        }
+
+        showQuestion();
+        submitButton.addEventListener("click", checkAnswer);
+    </script>
+</body>
+</html>
