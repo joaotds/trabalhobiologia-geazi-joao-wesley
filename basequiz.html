@@ -64,13 +64,30 @@
         <p id="question"></p>
         <input type="text" id="answer" class="caixa">
         <button id="submit" class="enviar">Enviar</button>
+        <p>
+        </p>
+        <img id="image" class="caixa" src="">
     </div>
 
     <script>
+
+    function trocarImagem() {
+
+
+    }
+    
+
         const questions = [
-            { question: "Pergunta 1", answer: "resposta1" },
-            { question: "Pergunta 2", answer: "resposta2" },
-            { question: "Pergunta 3", answer: "resposta3" }
+            { question: "Pergunta 1", answer: "resposta1", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Eo_circle_red_number-1.svg/2048px-Eo_circle_red_number-1.svg.png" },
+            { question: "Pergunta 2", answer: "resposta2", image: "https://cdn-icons-png.flaticon.com/512/6947/6947566.png" },
+            { question: "", answer: "", image: ""},
+            { question: "", answer: "", image: ""},
+            { question: "", answer: "", image: ""},
+            { question: "", answer: "", image: ""},
+            { question: "", answer: "", image: ""},
+            { question: "", answer: "", image: ""},
+            { question: "", answer: "", image: ""},
+            { question: "", answer: "", image: ""},
         ];
 
         let currentQuestion = 0;
@@ -78,9 +95,11 @@
         const questionElement = document.getElementById("question");
         const answerElement = document.getElementById("answer");
         const submitButton = document.getElementById("submit");
+        const imageElement = document.getElementById("image");
 
         function showQuestion() {
             questionElement.textContent = questions[currentQuestion].question;
+            imageElement.src = questions[currentQuestion].image;
         }
 
         function checkAnswer() {
