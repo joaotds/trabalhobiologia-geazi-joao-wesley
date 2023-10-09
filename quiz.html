@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+</head>
+
+ <style>
+        body {
+        background-color: #007a00;
+        background-image: url("https://img.freepik.com/free-vector/seamless-green-grass-pattern_1284-52275.jpg");
+        background-repeat: repeat;
+        color: #000000;
+        font-style: oblique;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        }
+        .enviar {
+	    display: block;
+	    margin: 0 0 20px;
+	    padding: 10px 25px;
+	    width: 250px;
+	    position: relative;
+	    margin: 0 auto;
+	    background-color: #ffffff; 
+        color: #000000; 
+        border: 2px solid #000; 
+        border-radius: 30px; 
+        padding: 10px 20px; 
+        font-size: 16px; 
+        cursor: pointer; 
+        transition: background-color 0.3s, color 0.3s; 
+        }
+
+        .enviar:hover {
+    	transform: scale(1.2);
+        background-image: url(https://i.pinimg.com/originals/19/2a/45/192a45cea9d9fae32c636fab9d2bcced.jpg);
+        }
+
+        .caixa {
+        background-image: url(https://i.pinimg.com/originals/19/2a/45/192a45cea9d9fae32c636fab9d2bcced.jpg);
+	    width: 400px;
+	    margin: 0 auto;
+	    background-color: #7ddd85; 
+        color: #000; 
+        border: 3px solid #000; 
+        border-radius: 30px; 
+        padding: 10px 20px; 
+        font-size: 60px; 
+        cursor: pointer; 
+        }
+        .caixamini {
+	    width: 340px;
+	    margin: 0 auto;
+	    background-color: #67cc64; 
+        color: #000; 
+        border: 2px solid #000; 
+        border-radius: 30px; 
+        padding: 10px 20px; 
+        font-size: 16px; 
+        cursor: pointer;
+        align-items: center;
+        text-align: center;
+}
+    </style>
+
+<body>
+    <h1 class="caixa">Quiz</h1>
+    <div id="quiz">
+        <p id="question" class="caixamini"></p>
+        <input type="text" id="answer" class="caixa">
+        <button id="submit" class="enviar">Enviar</button>
+        <p>
+        </p>
+        <img id="image" class="caixa" src="">
+    </div>
+
+    <script>
+
+    function trocarImagem() {
+
+
+    }
+    
+
+        const questions = [
+            { question: "Qual é a principal função das enzimas no corpo humano? a) Armazenar energia b) Transportar oxigênio c) Acelerar reações químicas d) Regular a temperatura corporal", answer: "C", image: "https://cdn-icons-png.flaticon.com/512/6535/6535974.png" },
+            { question: "Onde, em geral, as enzimas desempenham suas funções? a) Dentro do núcleo celular b) Na membrana plasmática c) No citoplasma d) No espaço extracelular", answer: "C", image:"https://conceitosdomundo.pt/wp-content/uploads/2021/10/citoplasma.jpg" },
+            { question: "Qual é o nome dado à substância específica na qual uma enzima atua?", answer: "Substrato", image: "https://blog4.mfrural.com.br/wp-content/uploads/2020/08/substrato.jpg"},
+            { question: "O que acontece com uma enzima quando ela é desnaturada? a) Ela se torna mais eficaz b) Ela perde sua forma e função c) Ela se multiplica d) Ela fica inibida", answer: "b", image: "data:image/jpeg;base64,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"},
+            { question: "Qual é o nome da enzima responsável pela quebra de amido em açúcares simples?", answer: "Amilase", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Salivary_alpha-amylase_1SMD.png/640px-Salivary_alpha-amylase_1SMD.png"},
+            { question: "Quais das seguintes condições podem afetar a atividade enzimática? a) pH e temperatura b) Cor dos olhos e altura c) Grupo sanguíneo e tipo de cabelo d) Nacionalidade e peso corporal", answer: "A", image: "https://brasilpiscinas.com.br/wp-content/uploads/2016/07/o-ph-da-piscina.jpg"},
+            { question: "O que é um inibidor enzimático? a) Uma substância que ativa uma enzima b) Uma substância que diminui a atividade de uma enzima c) Uma substância que cria novas enzimas d) Uma substância que transforma uma enzima em coenzima", answer: "b", image: "https://i0.wp.com/blog.portaleducacao.com.br/wp-content/uploads/2021/04/433-Inibicao-Enzimatica.jpg"},
+            { question: "Qual é o nome da enzima que quebra as gorduras em ácidos graxos e glicerol?", answer: "Lipase", image: "https://upload.wikimedia.org/wikipedia/commons/c/cf/Pancreatic_lipase%E2%80%93colipase_complex_with_inhibitor_1LPB.png"},
+            { question: "Qual é o nome do processo pelo qual uma enzima perde sua atividade devido a mudanças em seu ambiente, como pH extremo? a) Catálise enzimática b) Inibição competitiva c) Desnaturação enzimática d) Ativação enzimática", answer: "C", image: "https://s1.static.brasilescola.uol.com.br/img/2012/12/desnaturacao-das-proteinas.jpg"},
+            { question: "O que é uma enzima alostérica? a) Uma enzima que funciona apenas em pH neutro b) Uma enzima que sempre está ativa c) Uma enzima que só funciona em temperaturas elevadas  d) Uma enzima regulada por moléculas reguladoras específicas", answer: "d", image: "https://previews.123rf.com/images/molekuul/molekuul1604/molekuul160400039/55354555-enzima-antioxidante-de-thioredoxin-ilustra%C3%A7%C3%A3o-3d-representa%C3%A7%C3%A3o-dos-desenhos-animados-com-colora%C3%A7%C3%A3o.jpg"},
+            { question: "Parabens! você completou todas a perguntas, pressione 'enviar' para terminar o quiz ", answer: "", image: "https://media.tenor.com/5e80lvE8KxIAAAAC/macarena-salsicha-macarena.gif"},
+        ];
+
+        let currentQuestion = 0;
+
+        const questionElement = document.getElementById("question");
+        const answerElement = document.getElementById("answer");
+        const submitButton = document.getElementById("submit");
+        const imageElement = document.getElementById("image");
+
+        function showQuestion() {
+            questionElement.textContent = questions[currentQuestion].question;
+            imageElement.src = questions[currentQuestion].image;
+        }
+
+        function checkAnswer() {
+            const userAnswer = answerElement.value;
+            const correctAnswer = questions[currentQuestion].answer;
+
+            if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                if (currentQuestion < questions.length - 1) {
+                    currentQuestion++;
+                    showQuestion();
+                    answerElement.value = "";
+                } else {
+                    alert("Parabéns! Você acertou todas as perguntas.");
+                    resetQuiz();
+                }
+            } else {
+                alert("Resposta incorreta. Tente novamente.");
+                currentQuestion = 0;
+                showQuestion();
+                answerElement.value = "";
+            }
+        }
+
+        function resetQuiz() {
+            currentQuestion = 0;
+            showQuestion();
+            answerElement.value = "";
+        }
+
+        showQuestion();
+        submitButton.addEventListener("click", checkAnswer);
+    </script>
+</body>
+</html>
